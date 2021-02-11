@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+<div class="container mt-3">
+    <label for="">Email</label>
+    <input type="email" id="email">
+    <label for="">Password</label>
+    <input type="password" id="password">
+    <button class="btn btn-primary" onclick="envioData()">Enviar</button>
+</div>
+
+
+<script>
+    const envioData = async () => {
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+
+        const data = {
+            email: email,
+            passsword: password
+        }
+        const response = await axios.post("/Home", data)
+        console.log(response)
+        const { data: token } = response
+        window.location = "/Home?token=" + token
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous">
+
+
+    </script>
